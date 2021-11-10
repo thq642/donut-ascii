@@ -15,17 +15,98 @@
             }
 
             body {
-                background: black;
+
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
+
+            
+            .fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+ 
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+ 
+@media (min-aspect-ratio: 16/9) {
+    .mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-attachment: fixed
+      }
+    .bg-video {
+        height: 300%;
+        top: -100%;
+    }
+}
+ 
+@media (max-aspect-ratio: 16/9) {
+    .mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-attachment: fixed
+      }
+    .bg-video {
+        width: 300%;
+        left: -100%;
+    }
+}
+ 
+@media (max-width: 767px) {
+    .mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-attachment: fixed
+      }
+    .bg-video {
+        position: relative;
+        right: 120%;
+        bottom: 0;
+        width: auto;
+        height: 100%;
+    }
+}
         </style>
 
 
     </head>
     <body>
-        <canvas width="500" height="500" id="a"></canvas>
+        <div class="fullscreen-bg">
+            <video loop muted autoplay class="bg-video">
+                <source src="https://media.githubusercontent.com/media/thq642/donut-ascii/master/js/unminified/testlarge.mp4" type="video/mp4">
+            </video>
+          </div>
+        <canvas width="480" height="480" id="a"></canvas>
         <p>it's a donut</p>
 
         <script src="./js/unminified/lib.js"></script>
